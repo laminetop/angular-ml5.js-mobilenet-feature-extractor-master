@@ -1,0 +1,38 @@
+<p></p>
+<div class="container">
+<div class="form-group">
+  <label class="control-label">Label:</label>
+  <input type="text" [(ngModel)]="newLabel">
+  <button (click)="addImage()" class="btn btn-primary">Add Image</button>
+  <button (click)="train()" class="btn btn-danger">Train</button>
+</div>
+  <div class="row">
+    <div class="col-md-4">
+      <progress-bar [progress]="currentProgress" [color-degraded]="{'0': '#00cbcb',  '15': '#f9c3d3', '25': '#fd8c8e'}"></progress-bar>
+    </div>
+    <div class="col-md-4">
+      <p>Itération :{{iteration}}</p>
+      <p>Loss:{{loss}}</p>
+    </div>
+  </div>
+<div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>{{label}}   |   {{confidence*100 | number : '0.1'}} %</h3>
+    </div>
+  <div class="panel-body">
+    <video #video id="video" width="320" height="240" autoplay class="img-thumbnail"></video>
+    <canvas #canvas id="canvas" width="320" height="240" class="img-thumbnail"></canvas>
+  </div>
+  <div class="panel-body">
+    <ul class="nav nav-pills">
+      <li *ngFor="let c of captures" class="list-group-item">
+        <img src="{{ c }}" height="50"  />
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
+<div>
+</div>
+</div>
